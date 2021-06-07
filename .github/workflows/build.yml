@@ -19,8 +19,8 @@ jobs:
         run: yarn install
       - name: Check for syntax errors
         run: yarn test-build
-      # - name: ESlint check
-      #   run: yarn lint
+      - name: ESlint check
+        run: yarn lint
 
   ### Uncomment this if you want Docker hub integration
   # docker:
