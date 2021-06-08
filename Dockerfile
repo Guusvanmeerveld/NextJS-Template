@@ -1,17 +1,17 @@
-FROM node:16-alpine3.11 AS deps
+FROM node:alpine AS deps
 
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:16-alpine3.11 AS builder
+FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 ENV NEXT_TELEMETRY_DISABLED 1;
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
-FROM node:16-alpine3.11 AS runner
+FROM node:alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
