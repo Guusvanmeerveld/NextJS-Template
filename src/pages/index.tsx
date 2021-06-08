@@ -1,11 +1,13 @@
 import { NextSeo } from "next-seo";
 
+import Title from "@components/Title";
+
 import { NextPage } from "next";
 
 const Index: NextPage = () => (
 	<>
 		<NextSeo title="Hello World" />
-		<h1>Hello World</h1>
+		<Title />
 	</>
 );
 
